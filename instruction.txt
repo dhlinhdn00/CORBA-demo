@@ -1,0 +1,7 @@
+Compile IDL:
+omniidl -bpython {idl path}
+omniidl -bcxx {idl path}
+
+CPP:
+g++ -o server Server.cpp Basic_DemoSK.cc -I/usr/local/include -L/usr/local/lib -Wl,-rpath,/usr/local/lib -lomniORB4 -lomnithread
+g++ -o client Client.cpp Basic_DemoSK.cc -I/usr/local/include -L/usr/local/lib -Wl,-rpath,/usr/local/lib -lomniORB4 -lomnithread
