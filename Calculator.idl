@@ -1,0 +1,5 @@
+module Demo {
+    interface Calculator {
+        float add(in float a, in float b);
+    };
+};
