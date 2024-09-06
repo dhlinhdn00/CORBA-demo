@@ -1,6 +1,6 @@
 Compile IDL:
-omniidl -bpython {idl path}
-omniidl -bcxx {idl path}
+omniidl -bpython QA.idl
+omniidl -bcxx Basic_Demo.idl
 
 CPP:
 g++ -o server Server.cpp Basic_DemoSK.cc -I/usr/local/include -L/usr/local/lib -Wl,-rpath,/usr/local/lib -lomniORB4 -lomnithread
