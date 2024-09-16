@@ -3,9 +3,5 @@ env/
 omniORB
 omniORBpy
 .gitignore
-Advanced_Demo/Advanced_Demo/__pycache__
-/Advanced_Demo/Advanced_Demo__POA/__pycache__
-/Advanced_Demo/__pycache__
-/Basic_Demo_Python/Basic_Demo__POA/__pycache__
 gen_dir_map.sh
 dir_map.txt
