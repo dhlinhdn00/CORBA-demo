@@ -1,5 +1,0 @@
-module Advanced_Demo {
-    interface QASystem {
-        string ask(in string question);
-    };
-};
