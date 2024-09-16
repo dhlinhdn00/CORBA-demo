@@ -1,0 +1,5 @@
+module Basic_Demo {
+    interface Add_Operator {
+        float add(in float a, in float b);
+    };
+};
