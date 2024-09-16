@@ -1,5 +1,5 @@
 
-# CORBA Demo Project with OmniORB
+# CORBA Demo with OmniORB
 This project serves as a presentation on Distributed System Architecture, in the subject SOA - semester 9 - class 20PFIEV3 - The University of Danang - University of Science and Technology.
 ## Overview
 This project demonstrates the use of **CORBA (Common Object Request Broker Architecture)** with **OmniORB** for creating client-server applications in both **C++** and **Python**. The project contains two demos:
