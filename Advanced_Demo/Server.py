@@ -7,7 +7,7 @@ import Advanced_Demo__POA
 class BotSystemImpl(Advanced_Demo__POA.QASystem):
     def __init__(self):
         print("Loading model...")
-        self.model_name = "bigscience/bloom-560m"
+        self.model_name = "bigscience/bloom-560m" # Or you want change any model in huggfing face
         self.tokenizer = AutoTokenizer.from_pretrained(self.model_name)
         self.model = AutoModelForCausalLM.from_pretrained(self.model_name).to("cuda")
         print("Model loaded!")
@@ -33,29 +33,31 @@ class BotSystemImpl(Advanced_Demo__POA.QASystem):
         print(f"Answer: {answer}")
         return answer
 
-# Initialize ORB
-orb = CORBA.ORB_init()
+def main():
+    try:
+        orb = CORBA.ORB_init()
 
-# Resolve RootPOA and get POA manager
-obj = orb.resolve_initial_references("RootPOA")
-poa = obj  
+        obj = orb.resolve_initial_references("RootPOA")
+        poa = obj  
 
-poaManager = poa._get_the_POAManager()
+        poaManager = poa._get_the_POAManager()
 
-# Instantiate BotSystemImpl
-botsystem = BotSystemImpl()
-botsystem_id = poa.activate_object(botsystem)
-botsystem_ref = poa.servant_to_reference(botsystem)
+        botsystem = BotSystemImpl()
+        botsystem_id = poa.activate_object(botsystem)
+        botsystem_ref = poa.servant_to_reference(botsystem)
 
-# Get IOR and print it
-ior = orb.object_to_string(botsystem_ref)
-print(f"Server IOR: {ior}")
+        ior = orb.object_to_string(botsystem_ref)
+        print(f"Server IOR: {ior}")
 
-# Save IOR to ior.txt
-with open("ior.txt", "w") as ior_file:
-    ior_file.write(ior)
-    print("IOR saved to ior.txt")
+        with open("ior.txt", "w") as ior_file:
+            ior_file.write(ior)
+            print("IOR saved to ior.txt")
 
-# Activate the POA Manager and run ORB
-poaManager.activate()
-orb.run()
+        poaManager.activate()
+        orb.run()
+
+    except CORBA.Exception as ex:
+        print(f"CORBA Exception: {ex}")
+
+if __name__ == "__main__":
+    main()
